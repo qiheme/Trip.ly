@@ -45,3 +45,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'httparty'
+gem 'rspec-rails'
+gem 'capybara'
+gem 'jasmine-rails'

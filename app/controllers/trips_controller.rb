@@ -3,7 +3,5 @@ class TripsController < ApplicationController
   end
 
   def show
-    # response = HTTParty.get('')
-
   end
 end
