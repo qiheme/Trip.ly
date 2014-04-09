@@ -61,8 +61,8 @@
   <body>
     <div id="address_boxes">
       <form id="addresses">
-        <input type="field" id="start" placeholder="Enter Start Address"></input>
-        <input type="field" id="finish" placeholder="Enter End Address"></input>
+        <input type="field" id="start" name="start" placeholder="Enter Start Address"></input>
+        <input type="field" id="finish" name="finish" placeholder="Enter End Address"></input>
         <input type="submit" value="Submit">
       </form>
     </div>
@@ -118,8 +118,8 @@
       $('div#end').empty();
       var startValue = $('input#start').val();
       var finishValue = $('input#finish').val();
-      $('<h1>').text("Starting Address:" + startValue).appendTo('div#begin')
-      $('<h1>').text("End Address:" +finishValue).appendTo('div#end')
+      $('<h1>').text("Starting Address: " + startValue).appendTo('div#begin')
+      $('<h1>').text("End Address: " + finishValue).appendTo('div#end')
       e.preventDefault();
       console.log("shmee")
     });

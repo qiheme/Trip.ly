@@ -48,3 +48,7 @@ gem 'httparty'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'jasmine-rails'
+group :test do
+  gem "capybara"
+  gem "launchy"
+end
