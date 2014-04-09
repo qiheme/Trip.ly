@@ -4,57 +4,6 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions service</title>
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-      #panel {
-        position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-      }
-    </style>
-    <style>
-      #directions-panel {
-        height: 100%;
-        float: right;
-        width: 390px;
-        overflow: auto;
-      }
-
-      #map-canvas {
-        margin-right: 400px;
-      }
-
-      #control {
-        background: #fff;
-        padding: 5px;
-        font-size: 14px;
-        font-family: Arial;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-        display: none;
-      }
-
-      @media print {
-        #map-canvas {
-          height: 500px;
-          margin: 0;
-        }
-
-        #directions-panel {
-          float: none;
-          width: auto;
-        }
-      }
-    </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <h1>Welcome to Trip.Ly!!!</h1>
   </head>
@@ -62,7 +11,9 @@
     <div id="address_boxes">
       <form id="addresses">
         <input type="field" id="start" name="start" placeholder="Enter Start Address"></input>
+      </br>
         <input type="field" id="finish" name="finish" placeholder="Enter End Address"></input>
+      </br>
         <input type="submit" value="Submit">
       </form>
     </div>
@@ -72,32 +23,38 @@
     <div id="map-canvas"></div>
   </body>
   <script>
+    // set the directionsDisplay in the global namespace to call in the calcRoute function
+    // set the directions object to call in the calcRoute function
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
 
     function initialize() {
+      // the directions display render object is called here
       directionsDisplay = new google.maps.DirectionsRenderer();
+      // setting the parameters to pass to the map that is displayed on page load
       var mapOptions = {
         zoom: 4,
         center: new google.maps.LatLng(40.0000, -100.0000)
       };
+      // map object is created here
       var map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
+      // map is displayed by calling set map on the directions renderer
       directionsDisplay.setMap(map);
-
-      var control = document.getElementById('control');
-      control.style.display = 'block';
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
     }
 
     function calcRoute() {
+      // sets the start and end addresses to pass into our directions function
       var start = $('input#start').val();
       var end = $('input#finish').val();
+      // the parameters passed to the request hash
       var request = {
         origin: start,
         destination: end,
         travelMode: google.maps.TravelMode.TRANSIT
       };
+      // request hash params are passed here and if the directions exist
+      // they are rendered in the directionsPanel div and map canvas
       directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
           directionsDisplay.setDirections(response);
@@ -108,11 +65,8 @@
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    $('form#addresses').submit( function(e) {
-      e.preventDefault();
-      calcRoute();
-    });
 
+    // function to display the start and end address once the form is submitted
     $('form#addresses').submit( function (e) {
       $('div#begin').empty();
       $('div#end').empty();
@@ -121,7 +75,7 @@
       $('<h1>').text("Starting Address: " + startValue).appendTo('div#begin')
       $('<h1>').text("End Address: " + finishValue).appendTo('div#end')
       e.preventDefault();
-      console.log("shmee")
+      calcRoute();
     });
 
   </script>
