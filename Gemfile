@@ -46,7 +46,7 @@ end
 
 gem 'httparty'
 gem 'rspec-rails'
-gem 'capybara'
+gem 'rails_12factor'
 gem 'jasmine-rails'
 group :test do
   gem "capybara"
