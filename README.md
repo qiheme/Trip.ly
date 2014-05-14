@@ -24,7 +24,7 @@ Trip.ly
 
 ERD (https://github.com/qiheme/Trip.ly/blob/master/files/Triply%20ERD.jpg)
 
-A link to Trip.ly can be found here: (http://fast-waters-9648.herokuapp.com/)
+A link to Trip.ly can be found here: (http://triply.herokuapp.com/)
 
 The public repository for Trip.ly on Github can be found here: (https://github.com/qiheme/Trip.ly)
 
