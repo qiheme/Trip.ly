@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require trips
 //= require turbolinks
 //= require_tree .
-//= require trip
