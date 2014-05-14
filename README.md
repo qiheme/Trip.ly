@@ -22,7 +22,7 @@ Trip.ly
 ### User Stories Completed:
 * A user can have their commute generated based on address
 
-ERD ()
+ERD (https://github.com/qiheme/Trip.ly/blob/master/files/Triply%20ERD.jpg)
 
 A link to Trip.ly can be found here: (http://fast-waters-9648.herokuapp.com/)
 
